@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skillift Trading Course [Full]</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+            },
+            darkBg: '#090d16',
+            cardBg: '#111827',
+            panelBg: '#161f30',
+            borderDark: '#1f293d'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar for sleek UI */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #090d16;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #27354f;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #4f46e5;
+    }
+    .video-container:fullscreen {
+      width: 100vw;
+      height: 100vh;
+      border-radius: 0;
+    }
+  </style>
+</head>
+
+<body class="bg-darkBg text-slate-100 font-sans antialiased min-h-screen flex flex-col">
+
+  <!-- ================= TOP HEADER / NAVBAR ================= -->
+  <header class="sticky top-0 z-40 bg-panelBg/90 backdrop-blur-md border-b border-borderDark px-4 lg:px-8 py-3.5 flex items-center justify-between">
+    <!-- Brand & Title -->
+    <div class="flex items-center space-x-3">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 via-indigo-500 to-cyan-400 flex items-center justify-center shadow-lg shadow-brand-500/20">
+        <!-- Brand Icon -->
+        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+        </svg>
+      </div>
+      <div>
+        <div class="flex items-center space-x-2">
+          <span class="text-xs font-bold uppercase tracking-wider text-cyan-400 bg-cyan-950/60 border border-cyan-800/60 px-2 py-0.5 rounded-full">Pro Series</span>
+          <span class="text-xs text-slate-400">Skillift Education</span>
+        </div>
+        <h1 class="text-base sm:text-lg font-bold text-white tracking-tight leading-none mt-1">Trading Course [Full Masterclass]</h1>
+      </div>
+    </div>
+
+    <!-- Progress & Action Badges -->
+    <div class="flex items-center space-x-4">
+      <div class="hidden sm:flex flex-col items-end">
+        <div class="flex items-center space-x-2 text-xs font-medium text-slate-300">
+          <span id="headerProgressText">0 / 20 Completed</span>
+          <span class="text-indigo-400 font-bold" id="headerProgressPercent">0%</span>
+        </div>
+        <div class="w-32 h-1.5 bg-slate-800 rounded-full overflow-hidden mt-1.5 border border-slate-700/50">
+          <div id="headerProgressBar" class="h-full bg-gradient-to-r from-brand-500 to-cyan-400 transition-all duration-300 w-0"></div>
+        </div>
+      </div>
+
+      <!-- Quick Edit Instructions Button -->
+      <button onclick="toggleModal('infoModal')" class="inline-flex items-center space-x-1.5 text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 px-3 py-2 rounded-lg transition-colors">
+        <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
+        <span class="hidden md:inline">Add Your 20 Videos</span>
+      </button>
+
+      <!-- Toggle Playlist on Small Screens -->
+      <button onclick="toggleMobileSidebar()" class="lg:hidden p-2 rounded-lg bg-slate-800 border border-slate-700 text-slate-200 hover:text-white">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- ================= MAIN LAYOUT ================= -->
+  <main class="flex-1 max-w-[1720px] w-full mx-auto p-3 sm:p-4 lg:p-6 grid grid-cols-1 lg:grid-cols-12 gap-5">
+    
+    <!-- LEFT COLUMN: VIDEO PLAYER & LESSON DETAILS (8 cols) -->
+    <div class="lg:col-span-8 flex flex-col space-y-4">
+      
+      <!-- Video Player Wrapper -->
+      <div id="playerContainer" class="video-container relative w-full aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl border border-slate-800/80 group">
+        
+        <!-- HTML5 Video Tag -->
+        <video 
+          id="mainVideo" 
+          class="w-full h-full object-contain cursor-pointer"
+          playsinline
+          preload="metadata">
+          <source id="videoSource" src="" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+
+        <!-- Loading Spinner -->
+        <div id="videoSpinner" class="hidden absolute inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm pointer-events-none">
+          <div class="w-12 h-12 border-4 border-indigo-500/20 border-t-indigo-500 rounded-full animate-spin"></div>
+        </div>
+
+        <!-- Center Click to Play Overlay Icon -->
+        <div id="centerPlayOverlay" class="absolute inset-0 flex items-center justify-center pointer-events-none transition-opacity duration-300 opacity-0">
+          <div class="w-16 h-16 rounded-full bg-brand-600/90 text-white flex items-center justify-center shadow-2xl shadow-indigo-500/50 transform scale-90 group-hover:scale-100 transition-transform">
+            <svg id="centerPlayIcon" class="w-8 h-8 fill-current ml-1" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </div>
+        </div>
+
+        <!-- Custom Bottom Video Controls Bar -->
+        <div id="customControls" class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/95 via-black/70 to-transparent p-3 sm:p-4 flex flex-col space-y-2 opacity-100 transition-opacity duration-300">
+          
+          <!-- Scrubber Timeline Progress Bar -->
+          <div class="relative w-full flex items-center group/timeline cursor-pointer" id="progressBarContainer">
+            <div class="w-full h-1.5 group-hover/timeline:h-2.5 bg-slate-700/70 rounded-full overflow-hidden transition-all duration-150">
+              <div id="bufferedProgressBar" class="h-full bg-slate-500/50 w-0 absolute left-0 top-0"></div>
+              <div id="currentProgressBar" class="h-full bg-gradient-to-r from-brand-500 to-cyan-400 w-0 relative rounded-full"></div>
+            </div>
+            <div id="scrubHandle" class="absolute w-3.5 h-3.5 bg-white rounded-full shadow-md -ml-1.5 opacity-0 group-hover/timeline:opacity-100 pointer-events-none transition-opacity"></div>
+          </div>
+
+          <!-- Bottom Row Controls -->
+          <div class="flex items-center justify-between text-xs sm:text-sm text-slate-200">
+            
+            <!-- Left Controls: Play, Volume, Time -->
+            <div class="flex items-center space-x-2 sm:space-x-4">
+              <!-- Play / Pause -->
+              <button id="btnPlayPause" class="p-1.5 hover:text-cyan-400 focus:outline-none transition-colors" title="Play/Pause (Space)">
+                <svg id="playIcon" class="w-5 h-5 fill-current" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                <svg id="pauseIcon" class="w-5 h-5 fill-current hidden" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+              </button>
+
+              <!-- Skip -10s -->
+              <button onclick="skipTime(-10)" class="p-1.5 hover:text-cyan-400 focus:outline-none" title="Rewind 10s">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.066 11.2a1 1 0 000 1.6l5.334 4A1 1 0 0019 16V8a1 1 0 00-1.6-.8l-5.334 4zM4.066 11.2a1 1 0 000 1.6l5.334 4A1 1 0 0011 16V8a1 1 0 00-1.6-.8l-5.334 4z"/></svg>
+              </button>
+
+              <!-- Skip +10s -->
+              <button onclick="skipTime(10)" class="p-1.5 hover:text-cyan-400 focus:outline-none" title="Forward 10s">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.934 12.8a1 1 0 000-1.6l-5.334-4A1 1 0 005 8v8a1 1 0 001.6.8l5.334-4zM19.934 12.8a1 1 0 000-1.6l-5.334-4A1 1 0 0013 8v8a1 1 0 001.6.8l5.334-4z"/></svg>
+              </button>
+
+              <!-- Volume Control -->
+              <div class="flex items-center space-x-1.5 group/vol">
+                <button id="btnMute" class="p-1 hover:text-cyan-400">
+                  <svg id="volHighIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+                  <svg id="volMuteIcon" class="w-5 h-5 hidden text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"/></svg>
+                </button>
+                <input id="volumeSlider" type="range" min="0" max="1" step="0.05" value="1" class="w-14 sm:w-20 h-1 bg-slate-700 rounded-lg accent-brand-500 cursor-pointer">
+              </div>
+
+              <!-- Time display -->
+              <span class="text-xs font-mono text-slate-300">
+                <span id="currentTime">00:00</span> / <span id="totalDuration">00:00</span>
+              </span>
+            </div>
+
+            <!-- Right Controls: Speed, PiP, Theater, Fullscreen -->
+            <div class="flex items-center space-x-2 sm:space-x-3">
+              <!-- Playback Speed Dropdown -->
+              <div class="relative">
+                <select id="playbackRate" onchange="changeSpeed(this.value)" class="bg-slate-800/80 hover:bg-slate-700 text-xs text-slate-200 border border-slate-700 rounded px-1.5 py-1 focus:outline-none cursor-pointer">
+                  <option value="0.75">0.75x</option>
+                  <option value="1" selected>1.0x</option>
+                  <option value="1.25">1.25x</option>
+                  <option value="1.5">1.5x</option>
+                  <option value="2">2.0x</option>
+                </select>
+              </div>
+
+              <!-- Picture-in-Picture -->
+              <button id="btnPip" class="p-1 hover:text-cyan-400 hidden sm:block" title="Picture in Picture">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2v-6m-7-3h6m0 0v6m0-6L12 14"/></svg>
+              </button>
+
+              <!-- Fullscreen Toggle -->
+              <button id="btnFullscreen" class="p-1 hover:text-cyan-400" title="Fullscreen (F)">
+                <svg id="fullscreenEnterIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+                <svg id="fullscreenExitIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4l5 5m0 0H5m4 0V5m11 11l-5-5m0 0h4m-4 0v4M4 20l5-5m0 0H5m4 0v4m11-16l-5 5m0 0h4m-4 0V5"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Expired Token / CORS Error Warning Banner (Fallback) -->
+        <div id="videoErrorBanner" class="hidden absolute inset-0 bg-slate-950/95 flex flex-col items-center justify-center p-6 text-center z-30">
+          <div class="w-12 h-12 rounded-full bg-red-950/80 border border-red-800 text-red-400 flex items-center justify-center mb-3">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+          </div>
+          <h3 class="text-base font-bold text-white mb-1">Gofile Direct Link Issue Detected</h3>
+          <p class="text-xs text-slate-400 max-w-md mb-4 leading-relaxed">
+            Gofile download tokens may expire over time or require a refreshed link. You can open the raw page or update the video link anytime in the <code class="text-cyan-400 bg-slate-900 px-1.5 py-0.5 rounded">courseLessons</code> array.
+          </p>
+          <div class="flex items-center space-x-3">
+            <a id="errorSourceLink" href="#" target="_blank" rel="noopener noreferrer" class="px-4 py-2 bg-brand-600 hover:bg-brand-500 text-xs font-semibold rounded-lg text-white transition-colors">
+              Open Original Gofile Link
+            </a>
+            <button onclick="retryCurrentVideo()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-xs font-medium text-slate-300 rounded-lg border border-slate-700 transition-colors">
+              Retry Player
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Current Lesson Metadata Bar -->
+      <div class="bg-panelBg border border-borderDark rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <div class="flex items-center space-x-2 text-xs text-cyan-400 font-medium mb-1">
+            <span id="currentLessonModule">Module 1: Foundations</span>
+            <span>•</span>
+            <span id="currentLessonNumber">Lesson 1 of 20</span>
+          </div>
+          <h2 id="currentLessonTitle" class="text-lg sm:text-xl font-bold text-white tracking-tight">Trading Course Part 1 - Intro to Market Structure</h2>
+        </div>
+
+        <!-- Controls: Mark Complete & Next -->
+        <div class="flex items-center space-x-2.5 shrink-0">
+          <button id="btnToggleComplete" onclick="toggleCurrentCompleted()" class="inline-flex items-center space-x-2 text-xs font-medium px-4 py-2.5 rounded-lg border border-slate-700 bg-slate-800/80 hover:bg-slate-700 text-slate-200 transition-all">
+            <svg id="completeCheckIcon" class="w-4 h-4 text-emerald-400 hidden" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            <span id="completeBtnText">Mark as Completed</span>
+          </button>
+          <button onclick="playNextLesson()" class="inline-flex items-center space-x-1.5 text-xs font-semibold px-4 py-2.5 rounded-lg bg-brand-600 hover:bg-brand-500 text-white shadow-md shadow-brand-600/30 transition-all">
+            <span>Next Video</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Tab Content: Overview, Personal Notes & Cheat Sheets -->
+      <div class="bg-panelBg border border-borderDark rounded-xl overflow-hidden flex-1">
+        <!-- Tab Headers -->
+        <div class="border-b border-borderDark flex items-center space-x-6 px-4 bg-slate-900/40">
+          <button onclick="switchTab('notes')" id="tabBtnNotes" class="py-3 text-xs sm:text-sm font-semibold border-b-2 border-brand-500 text-white transition-colors">
+            Personal Notes
+          </button>
+          <button onclick="switchTab('overview')" id="tabBtnOverview" class="py-3 text-xs sm:text-sm font-medium border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition-colors">
+            Lesson Description
+          </button>
+          <button onclick="switchTab('resources')" id="tabBtnResources" class="py-3 text-xs sm:text-sm font-medium border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition-colors">
+            Resources & Downloads
+          </button>
+        </div>
+
+        <div class="p-4 sm:p-5">
+          <!-- Tab 1: Notes -->
+          <div id="tabContentNotes" class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs text-slate-400">Notes automatically save to your browser storage.</span>
+              <span id="notesStatus" class="text-xs text-emerald-400 opacity-0 transition-opacity">Saved ✓</span>
+            </div>
+            <textarea 
+              id="lessonNotesInput" 
+              rows="6"
+              oninput="handleNotesInput()" 
+              placeholder="Write down your key takeaways, entry setups, stop loss rules, and notes for this lesson..." 
+              class="w-full bg-slate-900/80 border border-slate-700/80 rounded-xl p-3.5 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all"></textarea>
+          </div>
+
+          <!-- Tab 2: Overview -->
+          <div id="tabContentOverview" class="hidden space-y-3 text-slate-300 text-sm leading-relaxed">
+            <h4 class="font-bold text-white text-base">Key Concepts in This Lesson</h4>
+            <p id="lessonDescription">In this opening masterclass session, we deep dive into pure market structure, recognizing higher highs and higher lows, identifying key swing points, and setting up the foundations of high-probability technical analysis without relying on lagging indicators.</p>
+            <div class="bg-slate-900/60 border border-slate-800 rounded-lg p-3 text-xs space-y-1.5 text-slate-400">
+              <div class="flex items-center space-x-2 text-cyan-400 font-semibold">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <span>Pro Tip</span>
+              </div>
+              <p>Practice mapping swing highs and lows on higher timeframes (Daily / 4-Hour) first before dropping down to the 15-minute or 5-minute execution charts.</p>
+            </div>
+          </div>
+
+          <!-- Tab 3: Resources -->
+          <div id="tabContentResources" class="hidden space-y-3">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div class="bg-slate-900/70 border border-slate-800 p-3.5 rounded-xl flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                  <div class="p-2 rounded-lg bg-indigo-950/60 text-indigo-400 border border-indigo-900">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                  </div>
+                  <div>
+                    <h5 class="text-xs font-semibold text-white">Market Structure Cheatsheet</h5>
+                    <span class="text-[11px] text-slate-400">PDF • 4.2 MB</span>
+                  </div>
+                </div>
+                <a href="#" class="text-xs text-brand-400 hover:text-brand-300 font-medium">Download</a>
+              </div>
+              <div class="bg-slate-900/70 border border-slate-800 p-3.5 rounded-xl flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                  <div class="p-2 rounded-lg bg-cyan-950/60 text-cyan-400 border border-cyan-900">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                  </div>
+                  <div>
+                    <h5 class="text-xs font-semibold text-white">Trading Journal Template</h5>
+                    <span class="text-[11px] text-slate-400">Excel / Notion • 1.1 MB</span>
+                  </div>
+                </div>
+                <a href="#" class="text-xs text-cyan-400 hover:text-cyan-300 font-medium">Download</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT COLUMN: 20-LESSON COURSE PLAYLIST (4 cols) -->
+    <div id="playlistSidebar" class="lg:col-span-4 bg-panelBg border border-borderDark rounded-2xl flex flex-col h-[650px] lg:h-[calc(100vh-100px)] sticky top-20 overflow-hidden shadow-xl">
+      
+      <!-- Playlist Header -->
+      <div class="p-4 border-b border-borderDark bg-slate-900/40 space-y-3">
+        <div class="flex items-center justify-between">
+          <h3 class="font-bold text-white text-base">Course Content</h3>
+          <span class="text-xs font-medium bg-slate-800 text-slate-300 px-2.5 py-1 rounded-full border border-slate-700" id="playlistCount">
+            20 Lessons
+          </span>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="relative">
+          <input 
+            type="text" 
+            id="lessonSearchInput" 
+            oninput="filterLessons(this.value)" 
+            placeholder="Search lessons (e.g. Liquidity, FVG)..." 
+            class="w-full bg-slate-950 border border-slate-800 rounded-lg pl-9 pr-3 py-2 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-brand-500 transition-colors">
+          <svg class="w-4 h-4 text-slate-500 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        </div>
+      </div>
+
+      <!-- Playlist Items Scrollable Area -->
+      <div class="flex-1 overflow-y-auto divide-y divide-slate-800/60" id="playlistContainer">
+        <!-- Rendered dynamically by JavaScript -->
+      </div>
+
+      <!-- Playlist Footer Info -->
+      <div class="p-3 border-t border-borderDark bg-slate-900/80 text-center">
+        <p class="text-[11px] text-slate-400">
+          💡 Click any lesson above to play immediately. Check the box when finished.
+        </p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ================= INSTRUCTIONS / HOW TO ADD VIDEOS MODAL ================= -->
+  <div id="infoModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+    <div class="bg-cardBg border border-borderDark rounded-2xl max-w-2xl w-full p-6 shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between border-b border-borderDark pb-3">
+        <h3 class="text-lg font-bold text-white flex items-center space-x-2">
+          <span>🛠️ How to Add Your 20 Video Links</span>
+        </h3>
+        <button onclick="toggleModal('infoModal')" class="text-slate-400 hover:text-white p-1">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <div class="text-xs sm:text-sm text-slate-300 space-y-3 leading-relaxed">
+        <p>
+          මෙම HTML file එක ඇතුලත ඇති <code class="text-cyan-400 font-mono font-bold bg-slate-900 px-2 py-0.5 rounded">courseLessons</code> array එක සොයාගන්න. 
+          එහි <strong>Video 1</strong> සඳහා ඔබ ලබාදුන් Gofile direct link එක දැනටමත් configure කර ඇත. ඉතිරි video 19 සඳහා ඔබගේ links පහසුවෙන්ම paste කළ හැක:
+        </p>
+
+        <div class="bg-darkBg p-4 rounded-xl border border-slate-800 font-mono text-xs text-indigo-300 overflow-x-auto">
+          <pre>{
+  id: 2,
+  title: "Trading Course Part 2 - Break of Structure & ChOCH",
+  duration: "42:15",
+  module: "Module 1: Foundations",
+  // මෙන්න මෙතනට ඔබගේ ඊළඟ Gofile Direct Link එක paste කරන්න:
+  videoUrl: "https://your-new-link-here.mp4" 
+},</pre>
+        </div>
+
+        <div class="space-y-1.5 text-xs text-slate-400">
+          <p>✅ <strong>Direct Link ගන්නා ආකාරය:</strong> Gofile එකේ වීඩියෝව play වන විට Right Click කර <em>"Copy video address"</em> එක ලබාගන්න.</p>
+          <p>✅ <strong>Progress Save:</strong> ශිෂ්‍යයා නරඹා අවසන් කරන පාඩම් බ්‍රවුසරයේ (Local Storage) ස්වයංක්‍රීයව save වේ.</p>
+          <p>✅ <strong>Notes:</strong> පාඩම් බලන අතරතුර ගන්නා සටහන් (Notes) ද ස්වයංක්‍රීයව save වේ.</p>
+        </div>
+      </div>
+
+      <div class="pt-2 flex justify-end">
+        <button onclick="toggleModal('infoModal')" class="px-5 py-2.5 bg-brand-600 hover:bg-brand-500 text-white rounded-lg text-xs font-semibold">
+          Got it, Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification System -->
+  <div id="toastNotification" class="fixed bottom-5 right-5 z-50 transform translate-y-16 opacity-0 transition-all duration-300 bg-slate-800 border border-slate-700 text-white text-xs px-4 py-2.5 rounded-xl shadow-2xl flex items-center space-x-2">
+    <span id="toastIcon" class="text-emerald-400">✓</span>
+    <span id="toastMessage">Action completed</span>
+  </div>
+
+  <!-- ================= JAVASCRIPT LOGIC ================= -->
+  <script>
+    /* ========================================================================
+       EASILY EDITABLE 20-LESSON COURSE CONFIGURATION
+       ඔබගේ අනෙකුත් video links මෙහි ඇති videoUrl කියන තැනට paste කරන්න.
+       ======================================================================== */
+    const courseLessons = [
+      {
+        id: 1,
+        title: "Trading Course Part 1 - Intro to Market Structure",
+        duration: "38:59",
+        module: "Module 1: Market Foundations",
+        videoUrl: "https://store-eu-par-2.gofile.io/download/web/9dc754a2-85b6-4bd1-b917-7263a55a9137/Trading%20Course%20Edited%201.mp4",
+        description: "Introduction to technical analysis, candlestick psychology, market phases, swing highs, and swing lows."
+      },
+      {
+        id: 2,
+        title: "Trading Course Part 2 - Break of Structure (BOS) vs Change of Character (ChoCH)",
+        duration: "41:12",
+        module: "Module 1: Market Foundations",
+        videoUrl: "", // Paste Part 2 direct URL here
+        description: "How to identify genuine structural trend continuations versus early reversals."
+      },
+      {
+        id: 3,
+        title: "Trading Course Part 3 - Institutional Order Blocks (OB)",
+        duration: "35:20",
+        module: "Module 2: Smart Money Concepts",
+        videoUrl: "", // Paste Part 3 direct URL here
+        description: "Understanding where banks and institutional algorithms place stop runs and orders."
+      },
+      {
+        id: 4,
+        title: "Trading Course Part 4 - Fair Value Gaps (FVG) & Imbalance Zones",
+        duration: "45:00",
+        module: "Module 2: Smart Money Concepts",
+        videoUrl: "", // Paste Part 4 direct URL here
+        description: "How price imbalances are created and how to use 3-candle imbalance setups for high R:R entries."
+      },
+      {
+        id: 5,
+        title: "Trading Course Part 5 - Liquidity Pools & Stop Hunt Mechanics",
+        duration: "52:10",
+        module: "Module 2: Smart Money Concepts",
+        videoUrl: "", // Paste Part 5 direct URL here
+        description: "Equal highs (EQH), equal lows (EQL), trendline liquidity, and how retail stops get swept."
+      },
+      {
+        id: 6,
+        title: "Trading Course Part 6 - Multi-Timeframe Top-Down Analysis",
+        duration: "39:45",
+        module: "Module 3: Execution Strategies",
+        videoUrl: "", // Paste Part 6 direct URL here
+        description: "Connecting Daily bias with 4-Hour trend and 15m/5m execution entry triggers."
+      },
+      {
+        id: 7,
+        title: "Trading Course Part 7 - Premium vs Discount Pricing (Fibonacci Tool)",
+        duration: "33:18",
+        module: "Module 3: Execution Strategies",
+        videoUrl: "", // Paste Part 7 direct URL here
+        description: "Using the 50% equilibrium and the Optimal Trade Entry (OTE 0.618 - 0.79) zone."
+      },
+      {
+        id: 8,
+        title: "Trading Course Part 8 - High Probability Entry Models",
+        duration: "48:30",
+        module: "Module 3: Execution Strategies",
+        videoUrl: "", // Paste Part 8 direct URL here
+        description: "Step-by-step checklist before clicking buy or sell in MetaTrader / TradingView."
+      },
+      {
+        id: 9,
+        title: "Trading Course Part 9 - Killzones & Forex / Crypto Session Times",
+        duration: "29:55",
+        module: "Module 3: Execution Strategies",
+        videoUrl: "", // Paste Part 9 direct URL here
+        description: "Mastering the London Open, New York Session Open, and Asian range sweeps."
+      },
+      {
+        id: 10,
+        title: "Trading Course Part 10 - Risk Management & Exact Position Sizing",
+        duration: "44:10",
+        module: "Module 4: Risk & Psychology",
+        videoUrl: "", // Paste Part 10 direct URL here
+        description: "The 1% rule, calculating lot sizes, and how to avoid blowing funded or personal accounts."
+      },
+      {
+        id: 11,
+        title: "Trading Course Part 11 - Risk to Reward (R:R) Optimization & Scaling",
+        duration: "36:40",
+        module: "Module 4: Risk & Psychology",
+        videoUrl: "", // Paste Part 11 direct URL here
+        description: "Taking partial profits at structural liquidity and letting runners hit higher targets."
+      },
+      {
+        id: 12,
+        title: "Trading Course Part 12 - Confluence Checklist: The 5-Point Trade Entry",
+        duration: "50:20",
+        module: "Module 4: Risk & Psychology",
+        videoUrl: "", // Paste Part 12 direct URL here
+        description: "Eliminating FOMO by enforcing a strict 5-point confluence validation rule."
+      },
+      {
+        id: 13,
+        title: "Trading Course Part 13 - Breaker Blocks & Mitigation Blocks",
+        duration: "37:50",
+        module: "Module 5: Advanced Price Action",
+        videoUrl: "", // Paste Part 13 direct URL here
+        description: "What happens when an Order Block fails? Turning failed zones into powerful breaker setups."
+      },
+      {
+        id: 14,
+        title: "Trading Course Part 14 - Inducement vs True Liquidity",
+        duration: "40:05",
+        module: "Module 5: Advanced Price Action",
+        videoUrl: "", // Paste Part 14 direct URL here
+        description: "Preventing early entries by discovering internal inducement traps."
+      },
+      {
+        id: 15,
+        title: "Trading Course Part 15 - News Trading & High Impact Event Handling (CPI, FOMC, NFP)",
+        duration: "32:15",
+        module: "Module 5: Advanced Price Action",
+        videoUrl: "", // Paste Part 15 direct URL here
+        description: "Rules for trading before, during, and after major economic calendar volatility."
+      },
+      {
+        id: 16,
+        title: "Trading Course Part 16 - Prop Firm Challenge Masterclass",
+        duration: "58:00",
+        module: "Module 6: Professional Career & Live Execution",
+        videoUrl: "", // Paste Part 16 direct URL here
+        description: "Strategies to pass FTMO / Funded account evaluations with maximum drawdown safety."
+      },
+      {
+        id: 17,
+        title: "Trading Course Part 17 - Live Chart Backtesting Session 1",
+        duration: "62:10",
+        module: "Module 6: Professional Career & Live Execution",
+        videoUrl: "", // Paste Part 17 direct URL here
+        description: "Applying all SMC rules on 50 consecutive setups using TradingView Bar Replay."
+      },
+      {
+        id: 18,
+        title: "Trading Course Part 18 - Live Chart Backtesting Session 2",
+        duration: "55:30",
+        module: "Module 6: Professional Career & Live Execution",
+        videoUrl: "", // Paste Part 18 direct URL here
+        description: "Forex pairs (EURUSD, GBPUSD), Gold (XAUUSD), and Bitcoin live structural breakdowns."
+      },
+      {
+        id: 19,
+        title: "Trading Course Part 19 - Trader Psychology & Emotional Discipline",
+        duration: "46:15",
+        module: "Module 6: Professional Career & Live Execution",
+        videoUrl: "", // Paste Part 19 direct URL here
+        description: "Overcoming revenge trading, greed, fear of missing out, and coping with losing streaks."
+      },
+      {
+        id: 20,
+        title: "Trading Course Part 20 - Building Your Final Personalized Trading Plan",
+        duration: "51:40",
+        module: "Module 6: Professional Career & Live Execution",
+        videoUrl: "", // Paste Part 20 direct URL here
+        description: "Compiling daily routines, journaling templates, and graduation action steps."
+      }
+    ];
+
+    /* ========================================================================
+       STATE MANAGEMENT & LOCAL STORAGE
+       ======================================================================== */
+    const STORAGE_KEY_COMPLETED = 'skillift_completed_v1';
+    const STORAGE_KEY_ACTIVE = 'skillift_active_id_v1';
+    const STORAGE_KEY_NOTES_PREFIX = 'skillift_notes_lesson_';
+
+    let activeLessonId = parseInt(localStorage.getItem(STORAGE_KEY_ACTIVE)) || 1;
+    let completedLessons = new Set(JSON.parse(localStorage.getItem(STORAGE_KEY_COMPLETED) || '[]'));
+    let filteredLessons = [...courseLessons];
+
+    // DOM Elements
+    const videoElement = document.getElementById('mainVideo');
+    const videoSource = document.getElementById('videoSource');
+    const playerContainer = document.getElementById('playerContainer');
+    const playlistContainer = document.getElementById('playlistContainer');
+    const videoSpinner = document.getElementById('videoSpinner');
+    const videoErrorBanner = document.getElementById('videoErrorBanner');
+    const errorSourceLink = document.getElementById('errorSourceLink');
+
+    // Controls
+    const btnPlayPause = document.getElementById('btnPlayPause');
+    const playIcon = document.getElementById('playIcon');
+    const pauseIcon = document.getElementById('pauseIcon');
+    const centerPlayOverlay = document.getElementById('centerPlayOverlay');
+    const currentProgressBar = document.getElementById('currentProgressBar');
+    const bufferedProgressBar = document.getElementById('bufferedProgressBar');
+    const progressBarContainer = document.getElementById('progressBarContainer');
+    const scrubHandle = document.getElementById('scrubHandle');
+    const currentTimeEl = document.getElementById('currentTime');
+    const totalDurationEl = document.getElementById('totalDuration');
+    const volumeSlider = document.getElementById('volumeSlider');
+    const btnMute = document.getElementById('btnMute');
+    const volHighIcon = document.getElementById('volHighIcon');
+    const volMuteIcon = document.getElementById('volMuteIcon');
+    const btnFullscreen = document.getElementById('btnFullscreen');
+    const fullscreenEnterIcon = document.getElementById('fullscreenEnterIcon');
+    const fullscreenExitIcon = document.getElementById('fullscreenExitIcon');
+    const btnPip = document.getElementById('btnPip');
+
+    // Metadata & Tabs
+    const currentLessonModule = document.getElementById('currentLessonModule');
+    const currentLessonNumber = document.getElementById('currentLessonNumber');
+    const currentLessonTitle = document.getElementById('currentLessonTitle');
+    const lessonDescription = document.getElementById('lessonDescription');
+    const lessonNotesInput = document.getElementById('lessonNotesInput');
+    const notesStatus = document.getElementById('notesStatus');
+    const completeCheckIcon = document.getElementById('completeCheckIcon');
+    const completeBtnText = document.getElementById('completeBtnText');
+
+    /* ========================================================================
+       INITIALIZATION
+       ======================================================================== */
+    window.addEventListener('DOMContentLoaded', () => {
+      renderPlaylist();
+      loadLesson(activeLessonId, false);
+      updateOverallProgress();
+      setupVideoEvents();
+      setupKeyboardShortcuts();
+    });
+
+    /* ========================================================================
+       LOAD & PLAY LESSON
+       ======================================================================== */
+    function loadLesson(lessonId, autoPlay = true) {
+      const lesson = courseLessons.find(l => l.id === lessonId);
+      if (!lesson) return;
+
+      activeLessonId = lessonId;
+      localStorage.setItem(STORAGE_KEY_ACTIVE, lessonId);
+
+      // Hide error state
+      videoErrorBanner.classList.add('hidden');
+
+      // Update titles
+      currentLessonModule.textContent = lesson.module;
+      currentLessonNumber.textContent = `Lesson ${lesson.id} of ${courseLessons.length}`;
+      currentLessonTitle.textContent = lesson.title;
+      lessonDescription.textContent = lesson.description;
+
+      // Update Notes Textarea from LocalStorage
+      const savedNote = localStorage.getItem(STORAGE_KEY_NOTES_PREFIX + lesson.id) || '';
+      lessonNotesInput.value = savedNote;
+
+      // Update Completion Button state
+      updateCompleteButtonState();
+
+      // Check if videoUrl is set
+      if (!lesson.videoUrl || lesson.videoUrl.trim() === "") {
+        showVideoError("No video URL added yet for this lesson. Click 'Add Your 20 Videos' to paste the link in the code.");
+        return;
+      }
+
+      errorSourceLink.href = lesson.videoUrl;
+
+      // Set video source
+      videoElement.pause();
+      videoSource.src = lesson.videoUrl;
+      videoElement.load();
+
+      if (autoPlay) {
+        const playPromise = videoElement.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(err => {
+            console.warn("Autoplay blocked or link issue:", err);
+            updatePlayPauseUI(false);
+          });
+        }
+      } else {
+        updatePlayPauseUI(false);
+      }
+
+      renderPlaylist();
+    }
+
+    function retryCurrentVideo() {
+      videoErrorBanner.classList.add('hidden');
+      loadLesson(activeLessonId, true);
+    }
+
+    function showVideoError(customMessage) {
+      videoErrorBanner.classList.remove('hidden');
+      if (customMessage) {
+        const p = videoErrorBanner.querySelector('p');
+        if (p) p.textContent = customMessage;
+      }
+    }
+
+    /* ========================================================================
+       CUSTOM VIDEO PLAYER CONTROLS & LOGIC
+       ======================================================================== */
+    function setupVideoEvents() {
+      // Play / Pause toggling
+      btnPlayPause.addEventListener('click', togglePlay);
+      videoElement.addEventListener('click', togglePlay);
+
+      videoElement.addEventListener('play', () => updatePlayPauseUI(true));
+      videoElement.addEventListener('pause', () => updatePlayPauseUI(false));
+
+      // Buffer & Time Updates
+      videoElement.addEventListener('timeupdate', onTimeUpdate);
+      videoElement.addEventListener('progress', onProgressBuffer);
+      videoElement.addEventListener('waiting', () => videoSpinner.classList.remove('hidden'));
+      videoElement.addEventListener('canplay', () => videoSpinner.classList.add('hidden'));
+
+      // Error handler
+      videoElement.addEventListener('error', (e) => {
+        videoSpinner.classList.add('hidden');
+        showVideoError("Gofile direct stream link expired, token invalid, or connection blocked.");
+      });
+
+      // Video Ended Auto Next
+      videoElement.addEventListener('ended', () => {
+        markLessonCompleted(activeLessonId, true);
+        showToast("Lesson completed! Loading next video...");
+        setTimeout(() => {
+          playNextLesson();
+        }, 1500);
+      });
+
+      // Scrubber Click & Drag
+      let isScrubbing = false;
+      progressBarContainer.addEventListener('mousedown', (e) => {
+        isScrubbing = true;
+        scrub(e);
+      });
+      window.addEventListener('mousemove', (e) => {
+        if (isScrubbing) scrub(e);
+      });
+      window.addEventListener('mouseup', () => {
+        if (isScrubbing) isScrubbing = false;
+      });
+
+      // Volume Controls
+      volumeSlider.addEventListener('input', (e) => {
+        videoElement.volume = e.target.value;
+        videoElement.muted = e.target.value == 0;
+        updateVolumeUI();
+      });
+      btnMute.addEventListener('click', toggleMute);
+
+      // Fullscreen
+      btnFullscreen.addEventListener('click', toggleFullscreen);
+      document.addEventListener('fullscreenchange', () => {
+        const isFull = !!document.fullscreenElement;
+        fullscreenEnterIcon.classList.toggle('hidden', isFull);
+        fullscreenExitIcon.classList.toggle('hidden', !isFull);
+      });
+
+      // PiP
+      if (document.pictureInPictureEnabled) {
+        btnPip.addEventListener('click', async () => {
+          try {
+            if (document.pictureInPictureElement) {
+              await document.exitPictureInPicture();
+            } else {
+              await videoElement.requestPictureInPicture();
+            }
+          } catch (err) {
+            console.error(err);
+          }
+        });
+      } else {
+        btnPip.classList.add('hidden');
+      }
+    }
+
+    function togglePlay() {
+      if (videoElement.paused || videoElement.ended) {
+        videoElement.play();
+      } else {
+        videoElement.pause();
+      }
+    }
+
+    function updatePlayPauseUI(isPlaying) {
+      playIcon.classList.toggle('hidden', isPlaying);
+      pauseIcon.classList.toggle('hidden', !isPlaying);
+      centerPlayOverlay.classList.remove('opacity-0');
+      document.getElementById('centerPlayIcon').innerHTML = isPlaying 
+        ? '<polygon points="5 3 19 12 5 21 5 3"/>'
+        : '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>';
+      setTimeout(() => centerPlayOverlay.classList.add('opacity-0'), 400);
+    }
+
+    function onTimeUpdate() {
+      if (!videoElement.duration) return;
+      const current = videoElement.currentTime;
+      const duration = videoElement.duration;
+      const pct = (current / duration) * 100;
+      currentProgressBar.style.width = `${pct}%`;
+      scrubHandle.style.left = `${pct}%`;
+
+      currentTimeEl.textContent = formatTime(current);
+      totalDurationEl.textContent = formatTime(duration);
+    }
+
+    function onProgressBuffer() {
+      if (videoElement.duration && videoElement.buffered.length > 0) {
+        const bufferedEnd = videoElement.buffered.end(videoElement.buffered.length - 1);
+        const duration = videoElement.duration;
+        bufferedProgressBar.style.width = `${(bufferedEnd / duration) * 100}%`;
+      }
+    }
+
+    function scrub(e) {
+      const rect = progressBarContainer.getBoundingClientRect();
+      let clickPos = (e.clientX - rect.left) / rect.width;
+      clickPos = Math.max(0, Math.min(1, clickPos));
+      if (videoElement.duration) {
+        videoElement.currentTime = clickPos * videoElement.duration;
+      }
+    }
+
+    function skipTime(seconds) {
+      videoElement.currentTime = Math.max(0, Math.min(videoElement.duration || 0, videoElement.currentTime + seconds));
+    }
+
+    function toggleMute() {
+      videoElement.muted = !videoElement.muted;
+      updateVolumeUI();
+    }
+
+    function updateVolumeUI() {
+      const isMuted = videoElement.muted || videoElement.volume === 0;
+      volHighIcon.classList.toggle('hidden', isMuted);
+      volMuteIcon.classList.toggle('hidden', !isMuted);
+      if (videoElement.muted) {
+        volumeSlider.value = 0;
+      } else {
+        volumeSlider.value = videoElement.volume;
+      }
+    }
+
+    function changeSpeed(rate) {
+      videoElement.playbackRate = parseFloat(rate);
+    }
+
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        playerContainer.requestFullscreen().catch(err => console.error(err));
+      } else {
+        document.exitFullscreen().catch(err => console.error(err));
+      }
+    }
+
+    function formatTime(seconds) {
+      if (isNaN(seconds)) return "00:00";
+      const mins = Math.floor(seconds / 60);
+      const secs = Math.floor(seconds % 60);
+      const formattedMins = mins < 10 ? '0' + mins : mins;
+      const formattedSecs = secs < 10 ? '0' + secs : secs;
+      return `${formattedMins}:${formattedSecs}`;
+    }
+
+    /* ========================================================================
+       KEYBOARD SHORTCUTS
+       ======================================================================== */
+    function setupKeyboardShortcuts() {
+      window.addEventListener('keydown', (e) => {
+        // Prevent trigger while typing in notes
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+        if (e.key === ' ' || e.key === 'k') {
+          e.preventDefault();
+          togglePlay();
+        } else if (e.key === 'ArrowRight' || e.key === 'l') {
+          skipTime(10);
+        } else if (e.key === 'ArrowLeft' || e.key === 'j') {
+          skipTime(-10);
+        } else if (e.key === 'f') {
+          e.preventDefault();
+          toggleFullscreen();
+        } else if (e.key === 'm') {
+          toggleMute();
+        }
+      });
+    }
+
+    /* ========================================================================
+       PLAYLIST RENDERING & FILTERING
+       ======================================================================== */
+    function renderPlaylist() {
+      playlistContainer.innerHTML = '';
+      document.getElementById('playlistCount').textContent = `${filteredLessons.length} Lessons`;
+
+      if (filteredLessons.length === 0) {
+        playlistContainer.innerHTML = `
+          <div class="p-6 text-center text-slate-500 text-xs">
+            No lessons match your search query.
+          </div>
+        `;
+        return;
+      }
+
+      filteredLessons.forEach((lesson) => {
+        const isActive = lesson.id === activeLessonId;
+        const isCompleted = completedLessons.has(lesson.id);
+
+        const item = document.createElement('div');
+        item.className = `p-3.5 flex items-start space-x-3 cursor-pointer transition-all border-l-4 ${
+          isActive 
+            ? 'bg-slate-800/90 border-brand-500 text-white shadow-inner' 
+            : 'hover:bg-slate-800/40 border-transparent text-slate-300'
+        }`;
+
+        item.onclick = (e) => {
+          // If checkbox clicked, do not reload lesson
+          if (e.target.type === 'checkbox') return;
+          loadLesson(lesson.id, true);
+        };
+
+        item.innerHTML = `
+          <!-- Custom Completed Checkbox -->
+          <div class="pt-0.5 shrink-0">
+            <input 
+              type="checkbox" 
+              ${isCompleted ? 'checked' : ''} 
+              onchange="handleCheckboxToggle(${lesson.id}, this.checked)"
+              class="w-4 h-4 rounded border-slate-700 bg-slate-900 text-brand-600 focus:ring-brand-500 cursor-pointer">
+          </div>
+
+          <!-- Lesson Details -->
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center justify-between mb-0.5">
+              <span class="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
+                Lesson ${lesson.id}
+              </span>
+              <span class="text-[11px] font-mono text-slate-400">
+                ${lesson.duration}
+              </span>
+            </div>
+            <p class="text-xs font-semibold leading-snug line-clamp-2 ${isActive ? 'text-indigo-300' : 'text-slate-200'}">
+              ${lesson.title}
+            </p>
+          </div>
+
+          <!-- Playing Indicator Icon -->
+          ${isActive ? `
+            <div class="shrink-0 text-brand-400 self-center">
+              <svg class="w-4 h-4 animate-pulse" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/></svg>
+            </div>
+          ` : ''}
+        `;
+
+        playlistContainer.appendChild(item);
+      });
+    }
+
+    function filterLessons(query) {
+      const q = query.toLowerCase().trim();
+      filteredLessons = courseLessons.filter(lesson => 
+        lesson.title.toLowerCase().includes(q) || 
+        lesson.module.toLowerCase().includes(q) ||
+        lesson.id.toString() === q
+      );
+      renderPlaylist();
+    }
+
+    /* ========================================================================
+       COMPLETION & PROGRESS TRACKING
+       ======================================================================== */
+    function handleCheckboxToggle(lessonId, isChecked) {
+      markLessonCompleted(lessonId, isChecked);
+    }
+
+    function toggleCurrentCompleted() {
+      const isCompleted = completedLessons.has(activeLessonId);
+      markLessonCompleted(activeLessonId, !isCompleted);
+    }
+
+    function markLessonCompleted(lessonId, isCompleted) {
+      if (isCompleted) {
+        completedLessons.add(lessonId);
+      } else {
+        completedLessons.delete(lessonId);
+      }
+      localStorage.setItem(STORAGE_KEY_COMPLETED, JSON.stringify([...completedLessons]));
+      updateOverallProgress();
+      updateCompleteButtonState();
+      renderPlaylist();
+    }
+
+    function updateCompleteButtonState() {
+      const isCompleted = completedLessons.has(activeLessonId);
+      if (isCompleted) {
+        completeCheckIcon.classList.remove('hidden');
+        completeBtnText.textContent = "Completed ✓";
+        document.getElementById('btnToggleComplete').classList.add('border-emerald-700/60', 'bg-emerald-950/30', 'text-emerald-300');
+      } else {
+        completeCheckIcon.classList.add('hidden');
+        completeBtnText.textContent = "Mark as Completed";
+        document.getElementById('btnToggleComplete').classList.remove('border-emerald-700/60', 'bg-emerald-950/30', 'text-emerald-300');
+      }
+    }
+
+    function updateOverallProgress() {
+      const count = completedLessons.size;
+      const total = courseLessons.length;
+      const pct = Math.round((count / total) * 100);
+
+      document.getElementById('headerProgressText').textContent = `${count} / ${total} Completed`;
+      document.getElementById('headerProgressPercent').textContent = `${pct}%`;
+      document.getElementById('headerProgressBar').style.width = `${pct}%`;
+    }
+
+    function playNextLesson() {
+      const currentIndex = courseLessons.findIndex(l => l.id === activeLessonId);
+      if (currentIndex < courseLessons.length - 1) {
+        loadLesson(courseLessons[currentIndex + 1].id, true);
+      } else {
+        showToast("🎉 Congratulations! You have reached the end of the course!");
+      }
+    }
+
+    /* ========================================================================
+       TABS & NOTES
+       ======================================================================== */
+    function switchTab(tabName) {
+      const tabs = ['notes', 'overview', 'resources'];
+      tabs.forEach(t => {
+        const content = document.getElementById(`tabContent${t.charAt(0).toUpperCase() + t.slice(1)}`);
+        const btn = document.getElementById(`tabBtn${t.charAt(0).toUpperCase() + t.slice(1)}`);
+        if (t === tabName) {
+          content.classList.remove('hidden');
+          btn.classList.add('border-brand-500', 'text-white');
+          btn.classList.remove('border-transparent', 'text-slate-400');
+        } else {
+          content.classList.add('hidden');
+          btn.classList.remove('border-brand-500', 'text-white');
+          btn.classList.add('border-transparent', 'text-slate-400');
+        }
+      });
+    }
+
+    let notesTimeout = null;
+    function handleNotesInput() {
+      clearTimeout(notesTimeout);
+      notesStatus.classList.remove('opacity-0');
+      notesStatus.textContent = "Saving...";
+      notesTimeout = setTimeout(() => {
+        localStorage.setItem(STORAGE_KEY_NOTES_PREFIX + activeLessonId, lessonNotesInput.value);
+        notesStatus.textContent = "Saved ✓";
+        setTimeout(() => notesStatus.classList.add('opacity-0'), 1500);
+      }, 500);
+    }
+
+    /* ========================================================================
+       MODAL & UI UTILITIES
+       ======================================================================== */
+    function toggleModal(modalId) {
+      const modal = document.getElementById(modalId);
+      modal.classList.toggle('hidden');
+    }
+
+    function toggleMobileSidebar() {
+      const sidebar = document.getElementById('playlistSidebar');
+      sidebar.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toastNotification');
+      const msg = document.getElementById('toastMessage');
+      msg.textContent = message;
+      toast.classList.remove('translate-y-16', 'opacity-0');
+      setTimeout(() => {
+        toast.classList.add('translate-y-16', 'opacity-0');
+      }, 3500);
+    }
+  </script>
+</body>
+</html>
